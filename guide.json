@@ -1,0 +1,107 @@
+{
+  "owner": "JUTZUGC",
+  "code": "JUTZUGC",
+  "project": {
+    "key": "digup",
+    "nameCn": "DigUp",
+    "repoName": "digup-deploy-guide",
+    "oneLiner": "按内容搜索本机文件的多模态桌面应用，基于 Google DeepMind 的 EmbeddingGemma 2",
+    "officialRepo": "https://github.com/ARahim3/DigUp",
+    "officialDocs": "https://github.com/ARahim3/DigUp#install",
+    "stars": "6.0k",
+    "license": "MIT",
+    "highlights": [
+      "跨类型搜索：图片、PDF、文档、录音、视频、代码",
+      "多语言：100+ 语言互相检索",
+      "本机索引：文件不上传，无账号、无遥测",
+      "精确匹配：发票号、错误码、人名按原样命中",
+      "跳到位置：PDF 页码、视频时间点、代码行",
+      "三平台：macOS、Windows、Linux 都有安装包"
+    ],
+    "mcpSupport": "项目本身不含 MCP；本仓库的 MCP 只提供安装包选择、SHA256 校验与常见问题。",
+    "webuiUrl": "",
+    "adapterPorts": "",
+    "collectedAt": "2026-10-29",
+    "verification": [
+      [
+        "README 确认三平台要求、865 MB 模型与本地索引",
+        "已核对 2026-10-29"
+      ],
+      [
+        "Release v0.7.0-beta.3 资产名、大小与 SHA256 已核对",
+        "已核对 2026-10-29"
+      ],
+      [
+        "未实测安装（会下载 38–140 MB 安装包并安装）",
+        "说明 2026-10-29"
+      ],
+      [
+        "MCP 冒烟：initialize / tools/list 返回 get_guide、search_guide、get_project_info",
+        "已验证 2026-10-29"
+      ],
+      [
+        "非目标宿主调用 get_guide 被拦截（HOST_NOT_ALLOWED）",
+        "已验证 2026-10-29"
+      ]
+    ],
+    "deploy": {
+      "type": "binary",
+      "steps": [
+        "curl -fL -o DigUp_0.7.0-beta.3_amd64.AppImage https://github.com/ARahim3/DigUp/releases/download/v0.7.0-beta.3/DigUp_0.7.0-beta.3_amd64.AppImage",
+        "echo \"f41d4a54b987371b22e5a26ae6fe4968d0e3c4fd7f63c6580441f257278cdb6f  DigUp_0.7.0-beta.3_amd64.AppImage\" | sha256sum -c -",
+        "chmod +x DigUp_0.7.0-beta.3_amd64.AppImage",
+        "echo \"校验通过：运行 ./DigUp_0.7.0-beta.3_amd64.AppImage\""
+      ],
+      "stepsPs": [
+        "curl.exe -fL -o DigUp_0.7.0-beta.3_x64-setup.exe https://github.com/ARahim3/DigUp/releases/download/v0.7.0-beta.3/DigUp_0.7.0-beta.3_x64-setup.exe",
+        "$h=(Get-FileHash .\\DigUp_0.7.0-beta.3_x64-setup.exe -Algorithm SHA256).Hash.ToLower()",
+        "if ($h -ne \"013ee9bdc08eb1256cb1b49b0ec11549ae7929f07536e18fbc14fe46d6059fe1\") { throw \"SHA256 校验失败\" }",
+        "Write-Host \"校验通过：双击安装包完成安装\""
+      ],
+      "source": "https://github.com/ARahim3/DigUp#install"
+    },
+    "pitfalls": [
+      "Mac 打不开：确认是 Apple Silicon 且系统 14+",
+      "Windows 提示未知发布者：安装包未签名，核对 SHA256 后再运行",
+      "Linux 装不上：deb 用 sudo apt install ./文件名.deb，别用 dpkg -i 跳过依赖",
+      "搜不到文件：确认目标文件夹已加入索引，且首轮索引完成",
+      "快捷键没反应：到设置里改快捷键，Wayland 桌面需在系统里手动绑定",
+      "磁盘占用变大：模型与索引缓存会占空间，卸载后手动清理"
+    ]
+  },
+  "gate": {
+    "allow": [
+      "dumate"
+    ],
+    "label": "百度搭子",
+    "url": "https://www.dumate.cn/",
+    "guideUrl": "https://github.com/JUTZUGC/digup-deploy-guide",
+    "howToFix": [
+      "1. 打开 https://www.dumate.cn/ ，下载并安装「百度搭子」电脑端（Windows / macOS）",
+      "2. 用账号登录",
+      "3. 在对话窗口发送：你好，帮我从 github 部署 JUTZUGC/digup-deploy-guide 到我的电脑上",
+      "4. 部署完成后，在同一对话窗口里继续使用"
+    ],
+    "hint": "请改用「百度搭子」部署后再使用；本工具没有网页版入口。",
+    "onError": "allow"
+  },
+  "keywords": [
+    "DigUp",
+    "DigUp 安装",
+    "本机文件搜索",
+    "语义搜索 文件",
+    "EmbeddingGemma 2",
+    "图片搜索 工具",
+    "PDF 内容搜索",
+    "离线文件搜索",
+    "digup deploy guide",
+    "DigUp 教程"
+  ],
+  "topics": [
+    "file-search",
+    "semantic-search",
+    "embeddings",
+    "desktop",
+    "privacy"
+  ]
+}
