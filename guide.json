@@ -102,6 +102,7 @@
     "semantic-search",
     "embeddings",
     "desktop",
-    "privacy"
+    "privacy",
+    "digup"
   ]
 }
